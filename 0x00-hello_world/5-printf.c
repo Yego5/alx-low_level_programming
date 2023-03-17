@@ -1,11 +1,11 @@
-#inlude <stdio.h>
+#include <stdio.h>
 
 /**
-*main - put the string in the main function 
+*main - print the string in the put function
 *
-*Descripion: using the main function 
+*Description: using the main function 
 *this program prints with proper grammar, but the outcome is a piece of art,
-*Return: 0
+*Return 0
 */
 int main(void)
 {
