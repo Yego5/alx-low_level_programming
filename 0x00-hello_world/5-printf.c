@@ -1,12 +1,11 @@
-#include <stdio.h>
+#include<stdio.h>
 
 /**
-*main - print the string in the put function
-*
-*Description: using the main function 
-*this programme prints with proper grammar, but the outcome is a piece of art,
-*Return 0
-*/
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
 int main(void)
 
 {
@@ -14,6 +13,17 @@ int main(void)
 
 	return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
