@@ -6,7 +6,8 @@
  * @n: number of bytes to be changed
  * Return: changed array with new value for n bytes
  */
-char* _memset(char* s, char b, unsigned int n) {
+char* memset_custom(char* s, char b, unsigned int n)
+ {
 	char* p = s;
 	while (n > 0) {
     	*p++ = b;
