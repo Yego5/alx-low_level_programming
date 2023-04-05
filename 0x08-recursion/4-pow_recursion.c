@@ -5,8 +5,7 @@
  * of y
  * @x: the base integer
  * @y: the exponent
- *
- *Return: returns x raised to the power of y as int
+ * Return: returns x raised to the power of y as int
  */
 int _pow_recursion(int x, int y)
 {
