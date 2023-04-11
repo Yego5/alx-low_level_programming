@@ -6,15 +6,15 @@
  * @argc: number of arguments
  * @argv: array of arguments
  *
- * Return: 0 always (Success)
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	Int j;
+	int k;
 
-	for (j = 0; j < argc; j++)
+	for (k = 0; k < argc; k++)
 	{
-		printf("%s\n", argv[j]);
+		printf("%s\n", argv[k]);
 	}
 
 	return (0);
