@@ -3,12 +3,12 @@
 #define DOG_H
 
 /**
- * dog_t - typedef for struct dog
- * @name: 1st person
- * @age: 2nd person
- * @owner: 3rd person
+ * struct dog dog_t - typedef 
+ * @name: First member
+ * @age: Second member
+ * @owner: Third member
  *
- * Description: Long
+ * Description: Longer description
  */
 
 struct dog
