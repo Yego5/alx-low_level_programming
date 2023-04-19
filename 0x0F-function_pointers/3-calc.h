@@ -5,7 +5,7 @@
 /**
  * struct op - A struct op.
  *
- * @op: The operater.
+ * @op: The operator.
  * @f: The associated function.
  */
 
@@ -28,4 +28,3 @@ int op_mod(int a, int b);
 int (*get_op_func(char *s))(int, int);
 
 
-#endif
