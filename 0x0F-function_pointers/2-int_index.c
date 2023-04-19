@@ -3,22 +3,21 @@
 /**
  * int_index - return index place if comparison = true, else -1
  * @array: array
- * @size: size of elems in array
- * @cmp: pointer to func of one of 3 in main
+ * @size: size of elements in array
+ * @cmp: pointer to func of one of the 3 in main
  *
  * Return: 0
  */
 int int_index(int *array, int size, int (*cmp)(int))
 
 {
-	Int n;
-
+	Int k;
 	if (array == NULL || size <= 0 || cmp == NULL)
 		return (-1);
-	for (n = 0; n < size; n++)
+	for (k = 0; k < size; k++)
 	{
 		if (cmp(array[n]))
-			return (n);
+			return (k);
 	}
 	return (-1);
 }
