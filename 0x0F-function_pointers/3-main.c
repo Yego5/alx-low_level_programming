@@ -7,10 +7,10 @@
 #include "3-calc.h"
 
 /**
- * main - Prints result of simple operations.
+ * main - Prints the result of the simple operations.
  *
- * @argc: The number of arguments supplied to program.
- * @argv: Array of pointers to the arguments.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: Array of the pointers to the arguments.
  *
  * Return: Always 0.
  */
