@@ -4,30 +4,31 @@
 
 
 /**
- * print_numbers - Prints numbers, followed by a newL.
- * @separator: The string to be printed btw numbers.
+ * print_numbers - Prints numbers, followed by a new line.
+ * @separator: The string to be printed between numbers.
  * @n: The number of integers passed to the function.
  * @...: A variable number of numbers to be printed.
  */
 
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	va_list nams
+	va_list nums;
 
-	unsigned int index;
-
-
-	va_start(nams, n);
+	unsigned int indx;
 
 
-	for (index = 0; index < n; index++)
+	va_start(nums, n);
+
+
+	for (indx = 0; indx < n; indx++)
 	{
-		printf("%d", va_arg(nams, int));
+		printf("%d", va_arg(nums, int));
 
-		if (index != (n - 1) && separator != NULL)
+		if (indx != (n - 1) && separator != NULL)
 			printf("%s", separator);
 	}
 	printf("\n");
 
-	va_end(nams);
+	va_end(nums);
 }
+
