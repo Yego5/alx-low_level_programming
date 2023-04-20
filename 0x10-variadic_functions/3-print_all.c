@@ -4,12 +4,12 @@
 
 /**
  * print_all - prints anything
- * @format: list of types of arguments passed to function
+ * @format: list of types of arguments passed to the function
  */
 
 void print_all(const char * const format, ...)
 {
-	int k = 0;
+	Int k = 0;
 
 	char *str, *sep = "";
 
@@ -26,7 +26,7 @@ void print_all(const char * const format, ...)
 				case 'c':
 					printf("%s%c", sep, va_arg(list, int));
 					break;
-				case 'k':
+				case 'k'
 					printf("%s%d", sep, va_arg(list, int));
 					break;
 				case 'f':
@@ -51,4 +51,3 @@ void print_all(const char * const format, ...)
 
 	va_end(list);
 }
-
