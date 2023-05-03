@@ -15,42 +15,42 @@ size_t print_listint_safe(const listint_t *head);
  */
 size_t looped_listint_len(const listint_t *head)
 {
- const listint_t *orange, *mango;
- size_t nodes = 1;
+const listint_t *orange, *mango;
+size_t nodes = 1;
 
- if (head == NULL || head->next == NULL)
- return (0);
+if (head == NULL || head->next == NULL)
+return (0);
 
- orange = head->next;
- mango = (head->next)->next;
+orange = head->next;
+mango = (head->next)->next;
 
- while (mango)
- {
- if (orange == mango)
- {
- orange = head;
- while (orange != mango)
- {
- nodes++;
- orange = orange->next;
- mango = mango->next;
- }
+while (mango)
+{
+if (orange == mango)
+{
+orange = head;
+while (orange != mango)
+{
+nodes++;
+orange = orange->next;
+mango = mango->next;
+}
 
- orange = orange->next;
- while (orange != mango)
- {
- nodes++;
- orange = orange->next;
- }
+orange = orange->next;
+while (orange != mango)
+{
+nodes++;
+orange = orange->next;
+}
 
- return (nodes);
- }
+return (nodes);
+}
 
- orange = orange->next;
- mango = (mango->next)->next;
- }
+orange = orange->next;
+mango = (mango->next)->next;
+}
 
- return (0);
+return (0);
 }
 
 /**
@@ -61,29 +61,28 @@ size_t looped_listint_len(const listint_t *head)
  */
 size_t print_listint_safe(const listint_t *head)
 {
- size_t nodes, ind = 0;
+size_t nodes, ind = 0;
 
- nodes = looped_listint_len(head);
+nodes = looped_listint_len(head);
 
- if (nodes == 0)
- {
- for (; head != NULL; nodes++)
- {
- printf("[%p] %d\n", (void *)head, head->n);
- head = head->next;
- }
- }
+if (nodes == 0)
+{
+for (; head != NULL; nodes++)
+{
+printf("[%p] %d\n", (void *)head, head->n);
+head = head->next;
+}
+}
 
- else
- {
- for (ind = 0; ind < nodes; ind++)
- {
- printf("[%p] %d\n", (void *)head, head->n);
- head = head->next;
- }
+else
+{
+for (ind = 0; ind < nodes; ind++)
+{
+printf("[%p] %d\n", (void *)head, head->n);
+head = head->next;
+}
 
- printf("-> [%p] %d\n", (void *)head, head->n);
- }
-
- return (nodes);
+printf("-> [%p] %d\n", (void *)head, head->n);
+}
+return (nodes);
 }
