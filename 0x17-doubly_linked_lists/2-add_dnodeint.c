@@ -4,14 +4,14 @@
  * add_dnodeint - adds a new node at the beginning
  * of a dlistint_t list
  *
- * @k: head of the list
+ * @hd: head of the list
  * @n: value of the element
  * Return: the address of the new element
  */
-dlistint_t *add_dnodeint(dlistint_t **k, const int n)
+dlistint_t *add_dnodeint(dlistint_t **hd, const int n)
 {
     dlistint_t *new;
-    dlistint_t *k;
+    dlistint_t *h;
 
     new = malloc(sizeof(dlistint_t));
     if (new == NULL)
@@ -19,20 +19,20 @@ dlistint_t *add_dnodeint(dlistint_t **k, const int n)
 
     new->n = n;
     new->prev = NULL;
-    k = *k;
+    h = *hd;
 
-    if (k != NULL)
+    if (h != NULL)
     {
-        while (k->prev != NULL)
-            k = k->prev;
+        while (h->prev != NULL)
+            h = h->prev;
     }
 
-    new->next = k;
+    new->next = h;
 
-    if (k != NULL)
-        k->prev = new;
+    if (h != NULL)
+        h->prev = new;
 
-    *k = new;
+    *hd = new;
 
     return (new);
 }
