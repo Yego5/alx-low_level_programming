@@ -14,7 +14,7 @@ size_t dlistint_len(const dlistint_t *hd)
 	coun = 0;
 
 	if (hd == NULL)
-		return coun;
+		return (coun);
 
 	while (hd->prev != NULL)
 		hd = hd->prev;
@@ -25,5 +25,6 @@ size_t dlistint_len(const dlistint_t *hd)
 		hd = hd->next;
 	}
 
-	return coun;
+	return (coun);
+}
 }
