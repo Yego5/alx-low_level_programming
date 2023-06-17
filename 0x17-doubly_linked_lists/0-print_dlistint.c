@@ -9,20 +9,22 @@
  */
 size_t print_dlistint(const dlistint_t *hed)
 {
-    int cnt;
+	int cnt;
 
-    cnt = 0;
+	cnt = 0;
 
-    if (hed == NULL)
-        return (cnt);
+	if (hed == NULL)
+		return (cnt);
 
-    while (hed->prev != NULL)
-        hed = hed->prev;
+	while (hed->prev != NULL)
+		hed = hed->prev;
 
-    while (hed != NULL)
-    {
-        printf("%d\n", hed->n);
-        cnt++;
-        hed = hed->next;
-    }    return (cnt);
+	while (hed != NULL)
+	{
+		printf("%d\n", hed->n);
+		cnt++;
+		hed = hed->next;
+	}
+
+	return (cnt);
 }
