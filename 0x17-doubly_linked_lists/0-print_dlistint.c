@@ -24,7 +24,5 @@ size_t print_dlistint(const dlistint_t *hed)
         printf("%d\n", hed->n);
         cnt++;
         hed = hed->next;
-    }
-
-    return (cnt);
+    }    return (cnt);
 }
