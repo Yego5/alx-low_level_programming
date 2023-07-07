@@ -1,53 +1,63 @@
 #include "hash_tables.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
- * hash_table_set - Add or update an element in a hash table.
- * @hsh: A pointer to the hash table.
- * @key: The key to add - cannot be an empty string.
- * @value: The value associated with the key.
+ * hash_table_set - function that adds an element to the hash table
+ * @ht: pointer to hash table
+ * @key: key to add the element
+ * @value: value to add the element
  *
- * Return: Upon failure - 0.
- *         Otherwise - 1.
+ * Return: 1 if it succeeded, 0 otherwise
  */
-int hash_table_set(hash_table_t *hsh, const char *key, const char *value)
+
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-    hash_node_t *nw;
-    char *value_copy;
-    unsigned long int hsh_i, i;
+	unsigned long int index = 0;
+	char *valuecopy, *keycopy;
+	hash_node_t *bucket, *new_node;
 
-    if (hsh == NULL || key == NULL || *key == '\0' || value == NULL)
-        return (0);
+	if (!ht || !key || !*key || !value)
+		return (0);
 
-    value_copy = strdup(value);
-    if (value_copy == NULL)
-        return (0);
+	valuecopy = strdup(value);
+	if (!valuecopy)
+		return (0);
 
-    hsh_i = key_index((const unsigned char *)key, hsh->size);
-    for (i = hsh_i; hsh->array[i]; i++)
-    {
-        if (strcmp(hsh->array[i]->key, key) == 0)
-        {
-            free(hsh->array[i]->value);
-            hsh->array[i]->value = value_copy;
-            return (1);
-        }
-    }
+	index = key_index((const unsigned char *)key, ht->size);
+	bucket = ht->array[index];
 
-    nw = malloc(sizeof(hash_node_t));
-    if (nw == NULL)
-    {
-        free(value_copy);
-        return (0);
-    }
-    nw->key = strdup(key);
-    if (nw->key == NULL)
-    {
-        free(nw);
-        return (0);
-    }
-    nw->value = value_copy;
-    nw->next = hsh->array[hsh_i];
-    hsh->array[hsh_i] = nw;
+	while (bucket)
+	{
+		if (!strcmp(key, bucket->key))
+		{
+			free(bucket->value);
+			bucket->value = valuecopy;
+			return (1);
+		}
+		bucket = bucket->next;
+	}
 
-    return (1);
+	new_node = malloc(sizeof(hash_node_t));
+	if (!new_node)
+	{
+		free(valuecopy);
+		return (0);
+	}
+
+	keycopy = strdup(key);
+	if (!keycopy)
+	{
+		free(valuecopy);
+		free(new_node);
+		return (0);
+	}
+
+	new_node->key = keycopy;
+	new_node->value = valuecopy;
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
+
+	return (1);
 }
+

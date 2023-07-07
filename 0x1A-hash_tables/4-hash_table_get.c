@@ -1,28 +1,63 @@
 #include "hash_tables.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
- * hash_table_get - Retrieve the value associated with a key in a hash table.
- * @hash_t: A pointer to the hash table.
- * @key: The key to get the value of.
+ * hash_table_set - function that adds an element to the hash table
+ * @ht: pointer to hash table
+ * @key: key to add the element
+ * @value: value to add the element
  *
- * Return: If the key cannot be matched - NULL.
- *         Otherwise - the value associated with the key in the hash table.
+ * Return: 1 if it succeeded, 0 otherwise
  */
-char *hash_table_get(const hash_table_t *hash_t, const char *key)
+
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-    hash_node_t *nd;
-    unsigned long int indx;
+	unsigned long int index = 0;
+	char *valuecopy, *keycopy;
+	hash_node_t *bucket, *new_node;
 
-    if (hash_t == NULL || key == NULL || *key == '\0')
-        return (NULL);
+	if (!ht || !key || !*key || !value)
+		return (0);
 
-    indx = key_index((const unsigned char *)key, hash_t->size);
-    if (indx >= hash_t->size)
-        return (NULL);
+	valuecopy = strdup(value);
+	if (!valuecopy)
+		return (0);
 
-    nd = hash_t->array[indx];
-    while (nd && strcmp(nd->key, key) != 0)
-        nd = nd->next;
+	index = key_index((const unsigned char *)key, ht->size);
+	bucket = ht->array[index];
 
-    return ((nd == NULL) ? NULL : nd->value);
+	while (bucket)
+	{
+		if (!strcmp(key, bucket->key))
+		{
+			free(bucket->value);
+			bucket->value = valuecopy;
+			return (1);
+		}
+		bucket = bucket->next;
+	}
+
+	new_node = malloc(sizeof(hash_node_t));
+	if (!new_node)
+	{
+		free(valuecopy);
+		return (0);
+	}
+
+	keycopy = strdup(key);
+	if (!keycopy)
+	{
+		free(valuecopy);
+		free(new_node);
+		return (0);
+	}
+
+	new_node->key = keycopy;
+	new_node->value = valuecopy;
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
+
+	return (1);
 }
+
