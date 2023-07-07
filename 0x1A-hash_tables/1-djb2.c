@@ -1,19 +1,20 @@
-#include "hash_tables.h"
-
+"hash_tables.h"
 /**
- * calculate_hash_djb2 - Hash function implementing the djb2 algorithm.
- * @strg: The string to hash.
+ * hash_djb2 - function to compute hash of 'str' using djb2
+ * @str: string to hash
  *
- * Return: The calculated hash.
+ * Return: value of 64-bit hash
  */
-unsigned long int calculate_hash_djb2(const unsigned char *strg)
+unsigned long int hash_djb2(const unsigned char *str)
 {
-    unsigned long int hash_v;
-    int chctr;
+	unsigned long int hash = 5381;
+	int c;
 
-    hash_v = 5381;
-    while ((chctr = *strg++))
-        hash_v = ((hash_v << 5) + hash_v) + chctr; /* hash * 33 + c */
+	while ((c = *str++))
+	{
+		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+	}
 
-    return (hash_v);
+	return (hash);
 }
+
