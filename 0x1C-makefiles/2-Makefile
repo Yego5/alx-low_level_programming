@@ -5,4 +5,4 @@ NAME = school
 
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-//@shadrack Yego
+#@shadrack Yego
