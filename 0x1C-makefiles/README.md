@@ -1,5 +1,7 @@
 0x1C. C - Makefiles
 
+redo
+
 Resources
 Read or watch:
 
