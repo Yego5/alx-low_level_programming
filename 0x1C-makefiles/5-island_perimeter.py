@@ -26,3 +26,4 @@ def island_perimeter(grid):
                 if (i > 0 and grid[i - 1][k] == 1):
                     edges += 1
     return size * 4 - edges * 2
+#redo @ shadrack
