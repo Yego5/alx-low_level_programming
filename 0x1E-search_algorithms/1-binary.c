@@ -1,48 +1,28 @@
 #include "search_algos.h"
-
 /**
- * binary_search - Searches for a value in a sorted array
- *                 of integers using binary search.
- * @array: A pointer to the first element of the array to search.
- * @size: The number of elements in the array.
- * @value: The value to search for.
+ * linear_search - searches for a value in an array of 
+ * integers using  Linear search algorithm
+ * @array: array to search the value in
+ * @size: size of the array
+ * @value:the value to look for
  *
- * Return: If the value is not present or the array is NULL, -1.
- * Otherwise, the index where the value is located.
+ * Return: index of the found value,
+ * or -1 if not found
  */
-
-int binary_search(int *array, size_t size, int value)
+int linear_search(int *array, size_t size, int value)
 {
-	size_t j, left, right;
-	
-	/* Check if the array is NULL */
-	if (array == NULL)
+	size_t i = 0;
+
+	if (!array || size == 0)
 		return (-1);
 
-	/* Perform binary search */
-	for (left = 0, right = size - 1; right >= left;)
+	while (i < size)
 	{
-		printf("Searching in array: ");
-		for (j = left; j < right; j++)
-			printf("%d, ", array[j]);
-		printf("%d\n", array[j]);
-		
-		/* Calculate the middle index */
-		j = left + (right - left) / 2;
-		
-		/* If the middle element is the value */
-		if (array[j] == value)
-			/* Return the index */
-			return (j);
-		
-		/* If the middle element is greater than the value */
-		if (array[j] > value)
-			/* Update the right boundary */
-			right = j - 1;
-		else
-			/* Otherwise, update the left boundary */
-			left = j + 1;
+		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
+		if (array[i] == value)
+			return (i);
+		i++;
 	}
-	/* Value not found, return -1 */
+
 	return (-1);
 }
